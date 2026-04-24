@@ -118,7 +118,7 @@ footer{text-align:center;padding:2rem;font-size:0.7rem;color:var(--muted);border
 #particles-hero{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .hero>*:not(#particles-hero){position:relative;z-index:1}
 .particle{position:absolute;border-radius:50%;opacity:0;animation:float-up 12s infinite;pointer-events:none}
-@keyframes float-up{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.3}90%{opacity:0.1}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+@keyframes float-up{0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}5%{opacity:0.8}50%{transform:translateY(-400px) translateX(15px) rotate(180deg);opacity:0.6}90%{opacity:0.25}100%{transform:translateY(-820px) translateX(-10px) rotate(360deg);opacity:0}}
 .case-card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,168,83,0.05),transparent);animation:shimmer 5s infinite;pointer-events:none}
 @keyframes shimmer{0%{left:-100%}100%{left:250%}}
 .section-title::after{content:'';display:block;width:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--accent));transition:width 0.9s ease 0.2s;margin-top:6px}
@@ -175,7 +175,7 @@ footer{text-align:center;padding:2rem;font-size:0.7rem;color:var(--muted);border
     <div class="hero-stat"><div class="hero-stat-val">10+</div><div class="hero-stat-label">Years Experience</div></div>
   </div>
   <div class="hero-cta reveal">
-    <a href="mailto:vhwang7@gmail.com" class="btn-primary">Get in Touch</a>
+    <a href="#contact" class="btn-primary">Get in Touch</a>
     <a href="https://www.linkedin.com/in/vivian-lazarevic-pmp-a6758b21/" target="_blank" class="btn-outline">LinkedIn</a>
   </div>
 </div>
@@ -427,6 +427,7 @@ footer{text-align:center;padding:2rem;font-size:0.7rem;color:var(--muted);border
 </div>
 
 <!-- CONTACT -->
+<div style="background:var(--surface)">
 <div class="contact-wrap" id="contact">
   <div class="section-label reveal" style="justify-content:center;margin-bottom:1rem">Contact</div>
   <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--dark);margin-bottom:1rem">Let's work together.</h2>
@@ -441,6 +442,7 @@ footer{text-align:center;padding:2rem;font-size:0.7rem;color:var(--muted);border
       LinkedIn
     </a>
   </div>
+</div>
 </div>
 
 <footer>
@@ -468,11 +470,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Floating particles in hero
   const container=document.getElementById('particles-hero');
   if(container){
-    for(let i=0;i<18;i++){
+    for(let i=0;i<80;i++){
       const p=document.createElement('div');
       p.className='particle';
-      const size=Math.random()*4+2;
-      p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:0;background:${Math.random()>0.5?'#d4a853':'#8b4513'};animation-delay:${Math.random()*12}s;animation-duration:${Math.random()*8+10}s`;
+      const size=Math.random()*3+2;
+      const hue=Math.random()>0.6?'#d4a853':Math.random()>0.5?'#c17f3a':'#e8c068';
+      p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:${Math.random()*5}%;background:${hue};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*5+5}s`;
       container.appendChild(p);
     }
   }
