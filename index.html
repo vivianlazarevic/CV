@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivian Lazarevic, PMP — Strategic Project Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f7;--surface:#f3f0eb;--card:#ffffff;
+  --border:#e8e2d9;--text:#1a1814;--muted:#7a7065;
+  --accent:#8b4513;--accent2:#c17f3a;--gold:#d4a853;--dark:#2c2418;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(250,249,247,0.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-name{font-family:'Playfair Display',serif;font-weight:500;font-size:1rem;color:var(--dark)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(139,69,19,0.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(212,168,83,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-tag{font-size:0.7rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:0.8rem}
+.hero-tag::before,.hero-tag::after{content:'';width:30px;height:1px;background:var(--accent);opacity:0.5}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;text-align:center;line-height:1.05;color:var(--dark);letter-spacing:-0.02em;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:1.05rem;color:var(--muted);text-align:center;max-width:600px;line-height:1.9;margin-bottom:2.5rem;font-weight:300}
+.hero-stats{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;padding:2rem 3rem;background:var(--card);border:1px solid var(--border)}
+.hero-stat{text-align:center}
+.hero-stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--accent);line-height:1.1}
+.hero-stat-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-top:0.3rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{padding:0.9rem 2.5rem;background:var(--accent);color:#fff;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.3s,transform 0.2s}
+.btn-primary:hover{background:var(--dark);transform:translateY(-2px)}
+.btn-outline{padding:0.9rem 2.5rem;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.btn-outline:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+
+/* SECTION LAYOUT */
+.section-wrap{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.alt-wrap{background:var(--surface)}
+.alt-inner{max-width:1100px;margin:0 auto;padding:6rem 3rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{font-size:0.68rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.8rem}
+.section-label::before,.section-label::after{content:'';width:20px;height:1px;background:var(--accent);opacity:0.5}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--dark);letter-spacing:-0.02em}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:4rem}
+.stat-card{background:var(--card);border:1px solid var(--border);padding:2rem;text-align:center;position:relative;overflow:hidden;transition:transform 0.3s,border-color 0.3s}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--accent))}
+.stat-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.stat-val{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--accent);line-height:1.1;margin-bottom:0.4rem}
+.stat-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+
+/* CASE STUDIES */
+.case-grid{display:flex;flex-direction:column;gap:3rem}
+.case-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s}
+.case-card:hover{border-color:var(--gold)}
+.case-header{padding:2rem 2.5rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
+.case-company{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--dark)}
+.case-role{font-size:0.82rem;color:var(--accent);font-weight:500;margin-top:0.2rem;letter-spacing:0.02em}
+.case-badge{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:0.4rem 1rem;border:1px solid var(--gold);color:var(--accent2);white-space:nowrap}
+.case-body{padding:2rem 2.5rem}
+.case-body p{font-size:0.9rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.case-wins{margin-top:1.5rem}
+.case-wins-title{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem}
+.case-wins-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.win-item{display:flex;gap:1rem;align-items:flex-start;padding:0.6rem 0;border-bottom:1px solid var(--border)}
+.win-item:last-child{border-bottom:none}
+.win-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:0.5rem}
+.win-text{font-size:0.85rem;color:var(--text);line-height:1.7}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;height:100%;width:1px;background:linear-gradient(to bottom,var(--gold),var(--accent),transparent)}
+.tl-item{position:relative;margin-bottom:2.5rem;padding-left:2rem}
+.tl-item::before{content:'';position:absolute;left:-0.45rem;top:0.4rem;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--gold)}
+.tl-date{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.3rem}
+.tl-company{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.15rem}
+.tl-title{font-size:0.85rem;font-weight:500;color:var(--accent);margin-bottom:0.6rem}
+.tl-desc{font-size:0.85rem;color:var(--muted);line-height:1.8}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.skill-block{background:var(--card);border:1px solid var(--border);padding:2rem;transition:border-color 0.3s}
+.skill-block:hover{border-color:var(--gold)}
+.skill-block h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;color:var(--dark);margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{font-size:0.73rem;padding:0.25rem 0.75rem;border:1px solid var(--border);color:var(--muted);transition:all 0.2s;cursor:default}
+.skill-tag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.edu-card{background:var(--card);border:1px solid var(--border);padding:2rem;transition:transform 0.3s,border-color 0.3s}
+.edu-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.edu-school{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem}
+.edu-degree{font-size:0.83rem;color:var(--accent);font-weight:500;margin-bottom:0.2rem}
+.edu-year{font-size:0.72rem;color:var(--muted);letter-spacing:0.04em}
+
+/* CONTACT */
+.contact-wrap{text-align:center;padding:6rem 3rem;max-width:700px;margin:0 auto}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.contact-link{display:inline-flex;align-items:center;gap:0.6rem;padding:0.8rem 2rem;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.82rem;letter-spacing:0.04em;transition:all 0.3s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.contact-link svg{width:16px;height:16px}
+
+footer{text-align:center;padding:2rem;font-size:0.7rem;color:var(--muted);border-top:1px solid var(--border);letter-spacing:0.05em}
+
+/* EXTRA ANIMATIONS */
+#particles-hero{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero>*:not(#particles-hero){position:relative;z-index:1}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:float-up 12s infinite;pointer-events:none}
+@keyframes float-up{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:0.3}90%{opacity:0.1}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+.case-card::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,168,83,0.05),transparent);animation:shimmer 5s infinite;pointer-events:none}
+@keyframes shimmer{0%{left:-100%}100%{left:250%}}
+.section-title::after{content:'';display:block;width:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--accent));transition:width 0.9s ease 0.2s;margin-top:6px}
+.section-header.visible .section-title::after{width:60px}
+.tl-item{transition:transform 0.3s}
+.tl-item:hover{transform:translateX(8px)}
+.tl-item:hover .tl-company{color:var(--accent);transition:color 0.3s}
+.win-item{transition:background 0.2s,padding-left 0.3s}
+.win-item:hover{background:rgba(212,168,83,0.05);padding-left:0.5rem}
+.hero-tag{animation:tag-pulse 3s ease-in-out infinite}
+@keyframes tag-pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.stat-card:nth-child(1){transition-delay:0.05s}
+.stat-card:nth-child(2){transition-delay:0.1s}
+.stat-card:nth-child(3){transition-delay:0.15s}
+.stat-card:nth-child(4){transition-delay:0.2s}
+.stat-card:nth-child(5){transition-delay:0.25s}
+.skill-tag{transition:all 0.25s;cursor:default}
+.edu-card{position:relative;overflow:hidden}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--accent));transform:scaleX(0);transition:transform 0.4s ease;transform-origin:left}
+.edu-card:hover::before{transform:scaleX(1)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.nav-links{gap:1rem}.nav-links a{font-size:0.68rem}
+  .hero{padding:6rem 1.5rem 4rem}.hero-stats{gap:1.5rem;padding:1.5rem}
+  .section-wrap{padding:4rem 1.5rem}.alt-inner{padding:4rem 1.5rem}
+  .case-header{flex-direction:column}.timeline{padding-left:1rem}.tl-item{padding-left:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Vivian Lazarevic, PMP</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero-section">
+  <div id="particles-hero"></div>
+  <div class="hero-tag reveal">Strategic Project Manager · PMP®</div>
+  <h1 class="reveal">Vivian<br><em>Lazarevic</em>, PMP</h1>
+  <p class="hero-sub reveal">A decade of turning ambiguous, high-stakes initiatives into structured, executable outcomes — across healthcare, biotech, finance, and technology.</p>
+  <div class="hero-stats reveal">
+    <div class="hero-stat"><div class="hero-stat-val">$650M+</div><div class="hero-stat-label">Portfolio Value</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">$200M</div><div class="hero-stat-label">Pfizer Campaign</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">IPO</div><div class="hero-stat-label">Biotech Launch</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">10+</div><div class="hero-stat-label">Years Experience</div></div>
+  </div>
+  <div class="hero-cta reveal">
+    <a href="mailto:vhwang7@gmail.com" class="btn-primary">Get in Touch</a>
+    <a href="https://www.linkedin.com/in/vivian-lazarevic-pmp-a6758b21/" target="_blank" class="btn-outline">LinkedIn</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="alt-wrap">
+<div class="alt-inner">
+  <div class="section-header reveal">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Structure. Foresight. Execution.</h2>
+  </div>
+  <div style="max-width:720px;margin:0 auto;text-align:center" class="reveal">
+    <p style="font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem">Strategic Project Manager with 10+ years delivering complex, high-visibility initiatives across healthcare, biotech, finance, and technology. I've overseen portfolios exceeding $650M in cumulative value — not as a coordinator, but as the person accountable for outcomes.</p>
+    <p style="font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem">I partner closely with executive leaders and cross-functional teams to translate mission and strategy into executable plans, surface risks early, and align people, process, and governance toward measurable outcomes. I build the system that manages the project — not just the project itself.</p>
+    <p style="font-size:1rem;color:var(--muted);line-height:1.9">Grounded in Lean, Agile, and Enterprise Risk Management. PMP® certified. Fluent in English, Mandarin, and Spanish. Based in New York.</p>
+  </div>
+</div>
+</div>
+
+<!-- CAREER HIGHLIGHTS -->
+<div class="section-wrap" id="highlights">
+  <div class="section-header reveal">
+    <div class="section-label">Career Highlights</div>
+    <h2 class="section-title">High-Stakes Delivery</h2>
+  </div>
+
+  <div class="stats-row reveal">
+    <div class="stat-card"><div class="stat-val">$650M+</div><div class="stat-label">Portfolio Value Managed</div></div>
+    <div class="stat-card"><div class="stat-val">$200M</div><div class="stat-label">Pfizer Global Campaign</div></div>
+    <div class="stat-card"><div class="stat-val">$150M+</div><div class="stat-label">KKR AUM Risk Systems</div></div>
+    <div class="stat-card"><div class="stat-val">$100M</div><div class="stat-label">Series B + IPO</div></div>
+    <div class="stat-card"><div class="stat-val">$100M</div><div class="stat-label">RFA UK Expansion</div></div>
+  </div>
+
+  <div class="case-grid reveal">
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-company">Lexeo Therapeutics</div>
+          <div class="case-role">Project Manager, Strategic Growth Initiatives · 2021–2024</div>
+        </div>
+        <div class="case-badge">$100M+ Series B · IPO</div>
+      </div>
+      <div class="case-body">
+        <p>Led strategic planning and operational alignment to take Lexeo from a fast-scaling biotech startup to an IPO-ready organization — delivering ahead of schedule in a high-pressure, high-stakes environment. Embedded within C-suite strategic discussions, I aligned cross-functional stakeholders, streamlined workflows, and identified operational gaps that could stall regulatory or investor progress.</p>
+        <p>Simultaneously supported the successful close of a $100M+ Series B funding round — facilitating due diligence preparation, investor communications, and milestone tracking across departments from finance to regulatory affairs.</p>
+        <div class="case-wins">
+          <div class="case-wins-title">Key Wins</div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">IPO readiness executed ahead of schedule — enabling Lexeo to enter investor conversations with confidence</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Supported cross-functional alignment on Series B milestones resulting in $100M+ capital secured</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Built strategic project structures that remained in use post-engagement</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-company">Pfizer — Rare Disease Division</div>
+          <div class="case-role">Senior Project Coordinator · 2019–2020</div>
+        </div>
+        <div class="case-badge">$200M Global Campaign</div>
+      </div>
+      <div class="case-body">
+        <p>Played a pivotal role in the execution of a $200M global marketing campaign designed to elevate Pfizer's presence in the rare disease space and unify messaging across regional markets. Orchestrated end-to-end campaign coordination across marketing, medical, compliance, and regulatory teams navigating a complex global matrix of stakeholders.</p>
+        <p>A defining moment came when I uncovered and escalated a significant international brand duplication risk — an EMEA distributor was found to be distributing one of Pfizer's rare disease therapies without corporate knowledge or consent. I led the response effort in collaboration with global risk, legal, and regulatory teams, mitigating the issue before campaign assets were finalized.</p>
+        <div class="case-wins">
+          <div class="case-wins-title">Key Wins</div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Supported successful delivery of a $200M+ global marketing initiative across North America and global markets</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Identified and mitigated a high-risk international brand duplication issue — protecting Pfizer's regulatory standing and brand integrity</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Unified cross-functional workflows to ensure timely, compliant, and cohesive campaign execution</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-company">KKR — PAAMCO Prisma</div>
+          <div class="case-role">Senior Project Coordinator & Risk Management Associate · 2015–2018</div>
+        </div>
+        <div class="case-badge">$150M+ AUM Risk Systems</div>
+      </div>
+      <div class="case-body">
+        <p>Led the implementation of enterprise risk modeling systems across three distinct financial powerhouses — KKR, Prisma Capital, and PAAMCO — bringing greater visibility, standardization, and control to $150M+ in Assets Under Management. Served as the connective tissue between operational leads, tech developers, compliance officers, and executive stakeholders across time zones.</p>
+        <p>Oversaw stakeholder alignment, requirement gathering, vendor selection, system customization, and testing across sensitive and heavily audited datasets — delivering a unified enterprise risk system on time and under budget.</p>
+        <div class="case-wins">
+          <div class="case-wins-title">Key Wins</div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Coordinated across KKR, Prisma Capital, and PAAMCO to deliver enterprise-wide risk visibility on $150M+ AUM</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Delivered project milestones on time and under budget in a highly regulated, high-stakes investment environment</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Bridged operational and technical teams, facilitating seamless integration and compliance alignment</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-company">Richard Fleischman & Associates</div>
+          <div class="case-role">Senior Project Coordinator, Global IT Expansion · 2012–2015</div>
+        </div>
+        <div class="case-badge">$100M UK Expansion</div>
+      </div>
+      <div class="case-body">
+        <p>Core member of the project team responsible for delivering RFA's $100M UK expansion initiative — transforming the company from a US-based regional IT firm into a globally recognized leader in financial IT services. Coordinated timelines, managed cross-border vendor relationships, and ensured operational readiness for critical IT systems across security, compliance, and support.</p>
+        <div class="case-wins">
+          <div class="case-wins-title">Key Wins</div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Contributed to the successful $100M UK expansion, helping establish RFA as an international IT management company</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Supported global IT deployments with focus on compliance, vendor integration, and operational continuity</div></div>
+          <div class="win-item"><div class="win-dot"></div><div class="win-text">Helped establish cross-border systems that later scaled across Asia-Pacific and the US West Coast</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="alt-wrap">
+<div class="alt-inner" id="experience">
+  <div class="section-header reveal">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Career Timeline</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-date">May 2025 — Present</div>
+      <div class="tl-company">People USA</div>
+      <div class="tl-title">Project Manager, Strategy & Development</div>
+      <div class="tl-desc">Leading strategic cross-functional healthcare projects aligned with organizational goals. Managing complex budgets, risks, and compliance requirements across multiple workstreams.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Mar 2021 — Mar 2024</div>
+      <div class="tl-company">Lexeo Therapeutics</div>
+      <div class="tl-title">Project Manager, Strategic Growth Initiatives</div>
+      <div class="tl-desc">Managed strategic growth, organizational development, and successful IPO launch. Supported $100M+ Series B funding round from discovery through close.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Feb 2020 — Present</div>
+      <div class="tl-company">Valley Surge Partners</div>
+      <div class="tl-title">Project Manager, Strategic Operations & Business Development</div>
+      <div class="tl-desc">Founder of independent strategic consulting practice. Managing simultaneous client engagements across healthcare, technology, and finance — designing governance frameworks and PMO infrastructure for scaling organizations.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Nov 2019 — Feb 2020</div>
+      <div class="tl-company">Pfizer — Rare Disease Division</div>
+      <div class="tl-title">Senior Project Coordinator</div>
+      <div class="tl-desc">Provided critical support for high-stakes executive operations. Supported $200M global marketing campaign and identified a significant international brand duplication risk that was mitigated before campaign launch.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Nov 2018 — Oct 2019</div>
+      <div class="tl-company">Starr Insurance Companies</div>
+      <div class="tl-title">Project Manager, Global Marketing & Business Development</div>
+      <div class="tl-desc">Directed strategic marketing and development initiatives across Starr Strategic Partners division. Managed cross-regional program delivery and client relations.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Nov 2015 — Oct 2018</div>
+      <div class="tl-company">KKR — PAAMCO Prisma</div>
+      <div class="tl-title">Senior Project Coordinator & Risk Management Associate</div>
+      <div class="tl-desc">Implemented enterprise risk modeling software across KKR, Prisma Capital, and PAAMCO for $150M+ AUM. Delivered on time and under budget across three distinct financial entities.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jun 2012 — Mar 2015</div>
+      <div class="tl-company">Richard Fleischman & Associates</div>
+      <div class="tl-title">Senior Project Coordinator, Global IT Expansion</div>
+      <div class="tl-desc">Supported $100M UK expansion initiative transforming RFA from a US regional firm into a globally recognized financial IT services company.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+  <div class="section-header reveal">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Skills & Capabilities</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-block">
+      <h3>Project Management</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PMP®</span><span class="skill-tag">Agile</span><span class="skill-tag">Scrum</span><span class="skill-tag">Kanban</span><span class="skill-tag">Lean</span><span class="skill-tag">Waterfall</span><span class="skill-tag">PMO</span><span class="skill-tag">Governance</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Strategy & Leadership</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Stakeholder Management</span><span class="skill-tag">Executive Communication</span><span class="skill-tag">Strategic Planning</span><span class="skill-tag">Change Management</span><span class="skill-tag">Cross-functional Leadership</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Risk & Finance</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Enterprise Risk Management</span><span class="skill-tag">Budget Management</span><span class="skill-tag">Financial Analysis</span><span class="skill-tag">Risk Modeling</span><span class="skill-tag">Compliance</span><span class="skill-tag">M&A Analysis</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Industries</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Healthcare</span><span class="skill-tag">Biotech</span><span class="skill-tag">Finance</span><span class="skill-tag">Technology</span><span class="skill-tag">Pharmaceuticals</span><span class="skill-tag">Insurance</span><span class="skill-tag">Public Sector</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">English (Native)</span><span class="skill-tag">Mandarin (Professional)</span><span class="skill-tag">Spanish (Professional)</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <h3>Tools & Tech</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">MS Project</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">AI Tools</span><span class="skill-tag">Data Analysis</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="alt-wrap">
+<div class="alt-inner" id="education">
+  <div class="section-header reveal">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic Background</h2>
+  </div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-school">Baruch College</div>
+      <div class="edu-degree">B.A., Finance and Investments</div>
+      <div class="edu-year">2008 — 2011</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-school">Harvard Business School Online</div>
+      <div class="edu-degree">Private Equity</div>
+      <div class="edu-year">2022</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-school">Project Management Institute</div>
+      <div class="edu-degree">Project Management Professional (PMP)®</div>
+      <div class="edu-year">Active Certification</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-school">CodeAcademy</div>
+      <div class="edu-degree">Data Science — Python & JavaScript</div>
+      <div class="edu-year">2021</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="section-label reveal" style="justify-content:center;margin-bottom:1rem">Contact</div>
+  <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--dark);margin-bottom:1rem">Let's work together.</h2>
+  <p class="reveal" style="color:var(--muted);font-size:0.95rem;line-height:1.8">Strategic project manager available for Director-level PM, PMO, and program leadership roles in healthcare, biotech, and fintech. Based in New York.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:vhwang7@gmail.com" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      vhwang7@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/vivian-lazarevic-pmp-a6758b21/" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>Vivian Lazarevic, PMP &mdash; Strategic Project Manager &mdash; New York, NY &mdash; 2026</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  // Scroll reveal
+  const els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+    },{threshold:0.06});
+    els.forEach(el=>obs.observe(el));
+  }else{els.forEach(el=>el.classList.add('visible'))}
+
+  // Section header observer for underline animation
+  const headers=document.querySelectorAll('.section-header');
+  const hobs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.2});
+  headers.forEach(h=>hobs.observe(h));
+
+  // Floating particles in hero
+  const container=document.getElementById('particles-hero');
+  if(container){
+    for(let i=0;i<18;i++){
+      const p=document.createElement('div');
+      p.className='particle';
+      const size=Math.random()*4+2;
+      p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:0;background:${Math.random()>0.5?'#d4a853':'#8b4513'};animation-delay:${Math.random()*12}s;animation-duration:${Math.random()*8+10}s`;
+      container.appendChild(p);
+    }
+  }
+
+  // Counter animation on hero stats
+  function animateCounter(el,target,suffix){
+    const duration=1800;
+    const start=performance.now();
+    const isDecimal=target%1!==0;
+    function update(now){
+      const progress=Math.min((now-start)/duration,1);
+      const ease=1-Math.pow(1-progress,3);
+      const val=isDecimal?(target*ease).toFixed(0):(Math.round(target*ease));
+      el.textContent=(val>1000?'$'+val/1000+'B+':val)+suffix;
+      if(progress<1)requestAnimationFrame(update);
+      else el.textContent=el.dataset.final;
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statsObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        document.querySelectorAll('.hero-stat-val').forEach(el=>{
+          el.dataset.final=el.textContent;
+        });
+        statsObs.disconnect();
+      }
+    });
+  },{threshold:0.5});
+  const heroStats=document.querySelector('.hero-stats');
+  if(heroStats)statsObs.observe(heroStats);
+});
+</script>
+</body>
+</html>
